@@ -3,21 +3,24 @@ a collection of scripts used in my daily life.
 
 ## Installation
 
-1. Clone the repository.
-```sh
-git clone https://github.com/honood/misctools.git
-```
+1. Clone the repository
+
+    ```sh
+    git clone https://github.com/honood/misctools.git
+    ```
 
 2. Install project dependencies
-```sh
-bundle install
-```
+
+    ```sh
+    bundle install
+    ```
 
 3. Run script
-```sh
-cd <path_to_misctools>
-ruby <path_of_target_script_relative_to_root_of_misctools>
-```
+
+    ```sh
+    cd <path_to_misctools>
+    ruby <path_of_target_script_relative_to_root_of_misctools>
+    ```
 
 ## Descriptions of the scripts
 
