@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'faraday', '~> 1.0'
+gem 'faraday_middleware', '~> 1.0'
 gem 'netrc', '~> 0.11.0'
 gem 'nokogiri', '~> 1.10'
 gem 'octokit', '~> 4.18'
