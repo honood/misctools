@@ -103,7 +103,7 @@ module Download
     #
     def save_disk(contents, file_path = nil)
       file_path = Dir.pwd if file_path.nil? || file_path&.empty?
-      File.write(File.join(file_path, 'apple_open_source.json'), contents, encoding: 'UTF-8', mode: 'wt')
+      File.write(File.join(file_path, 'apple_opensource.json'), contents, encoding: 'UTF-8', mode: 'wt')
     end
   end
 end
