@@ -73,10 +73,10 @@ module Download
         project_name = e.css('td.project-name')[0]
         h['name'] = project_name.text.tr("\u00a0", ' ').strip.gsub(/\s+/, ' ')
 
-        h['updated'] = !e.css('td.newproject')[0].nil?
+        h['updated'] = !e.css('td.project-updated')[0].text.tr("\u00a0", ' ').strip.empty?
         # Just an assert!
-        project_updated = !e.css('td.project-updated')[0].text.tr("\u00a0", ' ').strip.empty?
-        raise %([ERROR] Something is wrong with project update status!) unless project_updated == h['updated']
+        project_updated = !e.css('td.newproject')[0].nil?
+        puts %([ERROR] Something is wrong with project update status: #{e}) unless project_updated == h['updated']
 
         unless (temp = project_name.css('a')[0]).nil?
           h['source_url'] = URI.join(release_page_url, temp['href'])
@@ -102,8 +102,9 @@ module Download
     # @param [String, nil] file_path
     #
     def save_disk(contents, file_path = nil)
-      file_path = Dir.pwd if file_path.nil? || file_path&.empty?
-      File.write(File.join(file_path, 'apple_opensource.json'), contents, encoding: 'UTF-8', mode: 'wt')
+      file_path = File.join(Dir.pwd, 'apple_opensource.json') if file_path.nil? || file_path&.empty?
+      wrote_length = File.write(file_path, contents, encoding: 'UTF-8', mode: 'wt')
+      raise "[ERROR] Fail to write into `#{file_path}`." unless wrote_length == contents.size
     end
   end
 end
