@@ -97,4 +97,4 @@ DEPENDENCIES
   tty-prompt (~> 0.23.0)
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
