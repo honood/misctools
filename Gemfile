@@ -9,7 +9,7 @@ gem 'sequel', '~> 5.41'
 gem 'sqlite3', '~> 1.4'
 
 gem 'netrc', '~> 0.11.0'
-gem 'nokogiri', '~> 1.11'
+gem 'nokogiri', '~> 1.12'
 gem 'octokit', '~> 4.20'
 gem 'parallel', '~> 1.20'
 gem 'tty-prompt', '~> 0.23.0'
