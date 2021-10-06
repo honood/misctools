@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pathname'
+
 # https://github.com/be5invis/Iosevka
 # https://github.com/be5invis/Sarasa-Gothic
 
@@ -8,7 +10,13 @@
 # @return [Pathname]
 #
 def sarasa_gothic_ttf_dir
-  Pathname('~/Library/Fonts/sarasa-gothic-ttf-0.34.3').expand_path.tap do |pn|
+  p = ARGV.shift
+  unless p.nil?
+    pn = Pathname(p).expand_path
+    return pn if pn.directory?
+  end
+
+  Pathname('~/Library/Fonts/sarasa-gothic-ttf-0.34.4').expand_path.tap do |pn|
     raise "`#{pn}` directory does not exist!" unless pn.directory?
   end
 end
