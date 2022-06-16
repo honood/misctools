@@ -10,7 +10,7 @@ gem 'sqlite3', '~> 1.4'
 
 gem 'netrc', '~> 0.11.0'
 gem 'nokogiri', '~> 1.13'
-gem 'octokit', '~> 4.22'
+gem 'octokit', '~> 4.25'
 gem 'parallel', '~> 1.21'
 gem 'tty-prompt', '~> 0.23.1'
 
