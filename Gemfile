@@ -6,7 +6,7 @@ gem 'faraday', '~> 1.9'
 gem 'faraday_middleware', '~> 1.2'
 
 gem 'sequel', '~> 5.52'
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', '~> 1.5'
 
 gem 'netrc', '~> 0.11.0'
 gem 'nokogiri', '~> 1.13'

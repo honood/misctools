@@ -72,9 +72,9 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     sequel (5.60.1)
-    sqlite3 (1.5.0)
+    sqlite3 (1.5.1)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (1.5.0-x86_64-darwin)
+    sqlite3 (1.5.1-x86_64-darwin)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-prompt (0.23.1)
@@ -101,7 +101,7 @@ DEPENDENCIES
   parallel (~> 1.21)
   rubocop-performance (~> 1.13)
   sequel (~> 5.52)
-  sqlite3 (~> 1.4)
+  sqlite3 (~> 1.5)
   tty-prompt (~> 0.23.1)
 
 BUNDLED WITH
