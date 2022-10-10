@@ -2,18 +2,17 @@
 
 source 'https://rubygems.org'
 
-gem 'faraday', '~> 1.9'
-gem 'faraday_middleware', '~> 1.2'
+gem 'faraday', '~> 2.6'
 
-gem 'sequel', '~> 5.52'
-gem 'sqlite3', '~> 1.4'
+gem 'sequel', '~> 5.61'
+gem 'sqlite3', '~> 1.5'
 
 gem 'netrc', '~> 0.11.0'
 gem 'nokogiri', '~> 1.13'
-gem 'octokit', '~> 4.22'
-gem 'parallel', '~> 1.21'
+gem 'octokit', '~> 5.6'
+gem 'parallel', '~> 1.22'
 gem 'tty-prompt', '~> 0.23.1'
 
 group :development do
-  gem 'rubocop-performance', '~> 1.13'
+  gem 'rubocop-performance', '~> 1.15'
 end
