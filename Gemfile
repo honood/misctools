@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+plugin 'bundler-graph'
+
 gem 'faraday', '~> 2.6'
 
 gem 'sequel', '~> 5.61'
