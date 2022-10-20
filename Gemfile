@@ -16,3 +16,5 @@ gem 'tty-prompt', '~> 0.23.1'
 group :development do
   gem 'rubocop-performance', '~> 1.15'
 end
+
+gem "ruby-graphviz", "~> 1.2"
