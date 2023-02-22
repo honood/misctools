@@ -26,5 +26,27 @@ module Utils
 
       `gem list --installed #{gem_name}`.chomp.downcase == 'true'
     end
+
+    def encode_uri_component(str)
+      require 'uri'
+
+      if URI.respond_to?(:encode_uri_component)
+        URI.encode_uri_component(str)
+      else
+        URI.encode_www_form_component(str).gsub('+', '%20')
+      end
+    end
+
+    def decode_uri_component(str)
+      require 'uri'
+
+      if URI.respond_to?(:decode_uri_component)
+        URI.decode_uri_component(str)
+      else
+        # NOTE: No need to do `str.gsub('%20', '+')` firstly
+        URI.decode_www_form_component(str)
+      end
+    end
+
   end
 end
