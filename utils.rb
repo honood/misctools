@@ -14,6 +14,24 @@ module Utils
       system("command -v #{name} >/dev/null 2>&1")
     end
 
+    def curl
+      'curl'.tap do |s|
+        raise "[ERROR] `#{s}` 命令不存在。" unless command_exist?(s)
+      end
+    end
+
+    def wget
+      'wget'.tap do |s|
+        raise "[ERROR] `#{s}` 命令不存在。" unless command_exist?(s)
+      end
+    end
+
+    def git
+      'git'.tap do |s|
+        raise "[ERROR] `#{s}` 命令不存在。" unless command_exist?(s)
+      end
+    end
+
     # Check whether the specified gem is installed.
     #
     # @param [String] gem_name
@@ -24,7 +42,7 @@ module Utils
     def gem_installed?(gem_name)
       return false if gem_name.nil? || gem_name.empty?
 
-      `gem list --installed #{gem_name}`.chomp.downcase == 'true'
+      `gem list --installed #{gem_name}`.chomp.casecmp('true').zero?
     end
 
     def encode_uri_component(str)
