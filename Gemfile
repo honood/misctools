@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 plugin 'bundler-graph'
 
+gem 'bigdecimal', '~> 3.1'
+
 gem 'faraday', '~> 2.7'
 
 gem 'sequel', '~> 5.63'
