@@ -57,3 +57,4 @@ build-iPhoneSimulator/
 
 # JetBrains IDEs
 /.idea/*
+/main.rb

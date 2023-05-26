@@ -87,3 +87,15 @@ class Integer
     "#{self * 100}%"
   end
 end
+
+class Hash
+  if method_defined?(:invert_without_loss)
+    raise '`Hash#invert_without_loss` is already defined elsewhere.'
+  end
+
+  def invert_without_loss(use_set: false)
+    require 'set' if use_set
+    group_by { |_, v| v }
+      .transform_values { |v| v.map(&:first).then { |a| use_set ? Set.new(a) : a } }
+  end
+end
