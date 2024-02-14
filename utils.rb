@@ -66,5 +66,55 @@ module Utils
       end
     end
 
+    # Get specified App version string
+    #
+    # @param [String] name App name
+    # @return [String] App version string
+    #
+    # @note https://stackoverflow.com/questions/27595435/how-to-return-app-version-in-terminal-on-osx
+    def app_version(name, verbose: false)
+      raise ArgumentError, "Invalid argument name: `#{name}`" unless name.is_a?(String) && !name.strip.empty?
+
+      puts "[INFO][#{__method__}] App name: `#{name}`" if verbose
+
+      info_plist_path = if name.end_with?('.app')
+                          "/Applications/#{name}/Contents/Info.plist"
+                        else
+                          "/Applications/#{name}.app/Contents/Info.plist"
+                        end
+      raise "Cannot find the Info.plist file for `#{name}`" unless File.exist?(info_plist_path)
+
+      puts "[INFO][#{__method__}] Info.plis filepath: `#{info_plist_path}`" if verbose
+
+      if command_exist?('defaults')
+        return `defaults read '#{info_plist_path}' CFBundleShortVersionString`.chomp
+      else
+        puts "[INFO][#{__method__}] Cannot find command `defaults`" if verbose
+      end
+
+      if File.exist?('/usr/libexec/PlistBuddy')
+        return `/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' '#{info_plist_path}'`.chomp
+      else
+        puts "[INFO][#{__method__}] Cannot find command `/usr/libexec/PlistBuddy`" if verbose
+      end
+
+      if command_exist?('plutil')
+        return `plutil -extract CFBundleShortVersionString raw -o - '#{info_plist_path}'`.chomp
+      else
+        puts "[INFO][#{__method__}] Cannot find command `plutil`" if verbose
+      end
+
+      if command_exist?('mdls')
+        raw_res = `mdls -name kMDItemVersion '#{info_plist_path.delete_suffix('/Contents/Info.plist')}'`
+                    .chomp
+                    .split('=')
+                    .map(&:strip)
+        return raw_res[1] if raw_res.size == 2 && raw_res[0] == 'kMDItemVersion'
+      else
+        puts "[INFO][#{__method__}] Cannot find command `mdls`" if verbose
+      end
+
+      raise "Fail to get version for `#{name}`."
+    end
   end
 end
