@@ -4,15 +4,21 @@ require 'pathname'
 require 'date'
 require 'fileutils'
 
+require_relative '../utils'
+
 class OmniFocusCleaner
-  DEFAULT_BACKUPS_PATH = '~/Library/Containers/com.omnigroup.OmniFocus3/' \
-                         'Data/Library/Application Support/OmniFocus/Backups'
+  def self.default_backups_dir
+    if Gem::Version.new(Utils.app_version('OmniFocus')) < Gem::Version.new('4.0.0')
+      '~/Library/Containers/com.omnigroup.OmniFocus3/Data/Library/Application Support/OmniFocus/Backups'
+    else
+      '~/Library/Containers/com.omnigroup.OmniFocus4/Data/Documents/Backups'
+    end
+  end
 
   # @param [Pathname] backups_path
-  #        OmniFocus 备份文件存放路径。默认是:
-  #        `~/Library/Containers/com.omnigroup.OmniFocus3/Data/Library/Application Support/OmniFocus/Backups`
+  #        OmniFocus 备份文件存放目录路径。
   #
-  def initialize(backups_path = Pathname(DEFAULT_BACKUPS_PATH).expand_path)
+  def initialize(backups_path = Pathname(OmniFocusCleaner.default_backups_dir).expand_path)
     raise ArgumentError, %(Invalid backups path for OmniFocus: "#{backups_path.to_path}") unless backups_path.exist?
 
     @backups_path = backups_path
