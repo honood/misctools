@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 plugin 'bundler-graph'
 
 gem 'bigdecimal', '~> 3.1'
+gem 'logger', '~> 1.6'
+gem 'benchmark', '~> 0.4.0'
+gem 'mutex_m', '~> 0.3.0'
 
 gem 'faraday', '~> 2.7'
 
